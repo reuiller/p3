@@ -68,21 +68,4 @@ class Episode {
 			$this->_id_pseudo = $id_pseudo;
 		}
 	}
-
-	// Méthodes
-	public function afficherTitre(){
-		return $this->titre;
-	}
-
-	public function afficherEpisode(){
-		echo $this->episode;
-	}
-
-	public function afficherContenu(){
-		echo $this->contenu;
-	}
-
-	public function afficherDateCreation(){
-		echo $this->dateCreation;
-	}
 }
