@@ -1,11 +1,11 @@
 
 <?php
 
-include('bdd.php');
+include('../app/bdd.php');
 
 //Autoloader
 function __autoload($class_name){
-	require 'class/'.$class_name.'.php';
+	require '../app/class/'.$class_name.'.php';
 }
 
 // On admet que $db est un objet PDO.
