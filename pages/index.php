@@ -4,21 +4,19 @@
 include('../app/bdd.php');
 
 //Autoloader
-function __autoload($className){
-	require '../app/class/'.$className.'.php';
+function chargerClass($class){
+	require '../app/class/'.$class.'.php';
 }
+spl_autoload_register('chargerClass');
 
-   $episode = new Episode();    
+
+//test
+    $comment = new Comment();    
 	
-	$episode->setTitle('mon titre');
+	$comment->setAuthor('l\'auteur c\'est moi');
 
-	var_dump($episode);
+	echo $comment->getAuthor();
 
-	$user = new User();
+	var_dump($comment);
 
-	$user->setPseudo('Maxime');
-
-	var_dump($user);
-
-	echo $user->getPseudo();
-
+	
