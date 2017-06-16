@@ -4,16 +4,21 @@
 include('../app/bdd.php');
 
 //Autoloader
-function __autoload($class_name){
-	require '../app/class/'.$class_name.'.php';
+function __autoload($className){
+	require '../app/class/'.$className.'.php';
 }
 
-// On admet que $db est un objet PDO.
-$test = $bdd->query('SELECT id, title, episode, id_pseudo, content, creation_date FROM episode');
-    
-	return ($test);
-
-   $episode = new Episode();
-
-    var_dump($episode);
+   $episode = new Episode();    
 	
+	$episode->setTitle('mon titre');
+
+	var_dump($episode);
+
+	$user = new User();
+
+	$user->setPseudo('Maxime');
+
+	var_dump($user);
+
+	echo $user->getPseudo();
+
