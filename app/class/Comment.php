@@ -25,8 +25,7 @@ class Comment{
 			$this->dateComment = $dateComment; 
 		}		
 
-	//liste des getters
-	
+	//liste des getters	
 		public function getIdEpisode(){
 			return $this->idEpisode;
 		}
