@@ -5,8 +5,12 @@ use Episode;
 class EpisodeManager{
 
 	private $pdo;
+	/** EpisodeManager constructor.
 
+	Initialisation de la connexion à la base 
+	de donnée **/
 	public function __construct($db){
+		$this->pdo = new PDO('mysql:host=localhost;dbname=billet-simple49380','root','');
     
   }
 
@@ -32,7 +36,30 @@ class EpisodeManager{
 	survient, un objet  Episode si uen correspondance
 	est rouvée, Null s'il n'y a aucune correspondance **/
 	public function read($id){
+		$this->pdo->prepare('SELECT * FROM episode WHERE id = :id');
+		
+		//liaison des paramètres
+		$this->pdoStatement->bindValue(':id, $is, PDO::PARAM_INT');
+		
+		//exécution de la requête
+		$excusteIsOk = $this->pdoStatement->execute();
+		
+		if($excusteIsOk){
+			//récupèration de notre résultat
+			$episode = $this->pdoStatement->fechObject('Episode') //Pas sure de moi pour le "Episode" à la fin
 
+			if($episode === false){
+				return null;
+
+			} else{
+				return $episode
+			} 
+		else{
+			//erreur d'exécution
+			return false;
+
+			}
+	 	}
 
 	}
 
@@ -43,6 +70,17 @@ class EpisodeManager{
 	@return bool true en cas de succès ou false en 
 	cas d'erreur **/
 	public function update(Episode $episode){
+		$this->pdoStatement = $this->pdo->query('SELECT * FROM episode ORDER BY id ');
+
+		//construction d'un tableau d'objet de type Episode
+		$episode = [];
+
+		while($episode = $this->pdoStatement->fechObject('Episode'));
+		 {
+			$episode[] = $episode;
+		}
+
+		return $episode;
 
 	}
 
