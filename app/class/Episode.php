@@ -1,12 +1,8 @@
 <?php
 
-
-namespace App\Entity;
-}
-
 class Episode{
 
-	private $id; // @var int $is identifiant de l'épisode (généré automatiquement par le SGBDR, donc pas de de setter à prévoir)
+	private $id; // @var int $id identifiant de l'épisode (généré automatiquement par le SGBDR, donc pas de de setter à prévoir)
 	private $title; // @var string $title titre de l'épisode
 	private $episode; // @var string $episode contenu de l'épisode
 	private $idPseudo; // @var int $idPseudo identifiant de l'utilisateur (généré automatiquement par le SGBDR, donc pas de de setter à prévoir)

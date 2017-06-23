@@ -28,14 +28,13 @@ class EpisodeManager{
 	public function create(Episode &$episode)
 	{
 		$this->pdoStatement = $this->pdo->prepare('INSERT INTO episode 
-			VALUES (NULL, :title, ,:content, :idPseudo, :content, :creationDate)');
+			VALUES (NULL, :title, :episode, NULL, :content, :creationDate)');
 
 		//liaison des paramètres
 		$this->pdoStatement->bindValue(':title', $episode->getTitle(), PDO::PARAM_STR);
-		$this->pdoStatement->bindValue(':episode', $episode->getEpisode(), PDO::PARAM_STR);
-		$this->pdoStatement->bindValue(':idPseudo', $episode->getIdPseudo(), PDO::PARAM_STR);
+		$this->pdoStatement->bindValue(':episode', $episode->getEpisode(), PDO::PARAM_INT);
 		$this->pdoStatement->bindValue(':content', $episode->getContent(), PDO::PARAM_STR);
-		$this->pdoStatement->bindValue(':creationDate', $episode->getCreationDate(), PDO::PARAM_STR);
+		$this->pdoStatement->bindValue(':creationDate', $episode->getCreationDate());
 
 		//exécution de la requête
 		$this->pdoStatement->execute();
@@ -92,7 +91,18 @@ class EpisodeManager{
 	cas d'erreur **/
 
 	public function update (Episode $episode){
+		$this->pdoStatement = $this->pdo->prepare('UPDATE episode 
+			set title=:title, episode=:episode, content=:content, creationDate=:creationDate where id=:id LIMITE 1');
+		
+		$this->pdoStatement->bindValue(':title', $episode->getTitle(), PDO::PARAM_STR);
+		$this->pdoStatement->bindValue(':episode', $episode->getEpisode(), PDO::PARAM_STR);
+		$this->pdoStatement->bindValue(':content', $episode->getContent(), PDO::PARAM_STR);
+		$this->pdoStatement->bindValue(':creationDate', $episode->getCreationDate(), PDO::PARAM_STR);
+		$this->pdoStatement->bindValue(':id', $episode->getId(), PDO::PARAM_INT);
+	
+		//execution de la requête
 
+		return $this->pdoStatement->execute();		
 
 	}
 
