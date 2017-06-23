@@ -113,7 +113,12 @@ class EpisodeManager{
 	@return bool true en cas de succès ou false en 
 	cas d'erreur **/
 	public function delete (Episode $episode){
-		
+
+		$this->pdoStatement = $this->pdo->prepare('DELETE FROM episode WHERE id = :id LIMIT 1');
+		$this->pdoStatement->bindValue(';id', $episode->getId(), PDO::PARAM_INT);
+
+		//exécution de la requête
+		return $this->pdoStatement->execute();
 	}
 
 	/** Récupère tous les objets Episode de la bdd
