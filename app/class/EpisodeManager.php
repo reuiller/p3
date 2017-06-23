@@ -1,9 +1,5 @@
 <?php
 
-use Episode;
-
-use PDO;
-
 class EpisodeManager{
 
 	/** @var \PDO $pdo objet PDO lié à la bdd "billets-simple49380". Comme la "conexion" 
@@ -21,7 +17,7 @@ class EpisodeManager{
   }
 
 	/** Insert un objet Episode dans la bdd 
-	et met à jour l'objet passe en arguement 
+	et met à jour l'objet passé en arguement 
 	en lui spécifiant un identifiant
 
 	@param Episode $episode est un type d'objet 
@@ -29,39 +25,58 @@ class EpisodeManager{
 
 	@return bool true si l'objet a été inéré,
 	false si une erreur survient **/
-	public function create(Episode $episode){
-		$this->pdoStatement = $this->pdo->prepare('INSERT INTO episode VALUES (NULL, :')
+	public function create(Episode &$episode)
+	{
+		$this->pdoStatement = $this->pdo->prepare('INSERT INTO episode 
+			VALUES (NULL, :title, ,:content, :idPseudo, :content, :creationDate)');
 
-			//A COMPLETER ////////////////////////////////////////////////////////////////
+		//liaison des paramètres
+		$this->pdoStatement->bindValue(':title', $episode->getTitle(), PDO::PARAM_STR);
+		$this->pdoStatement->bindValue(':episode', $episode->getEpisode(), PDO::PARAM_STR);
+		$this->pdoStatement->bindValue(':idPseudo', $episode->getIdPseudo(), PDO::PARAM_STR);
+		$this->pdoStatement->bindValue(':content', $episode->getContent(), PDO::PARAM_STR);
+		$this->pdoStatement->bindValue(':creationDate', $episode->getCreationDate(), PDO::PARAM_STR);
+
+		//exécution de la requête
+		$this->pdoStatement->execute();
+		if(!$executeIsOk){
+			return false;
+		}
+			else{
+			$id = $this->pdo->lastInsertId();
+			$episode = $this->read($id);
+				return true;
+			}
 	}
 
 	/** Récupère un objet Episode à partir de son 
-	identifaint
+	identifiant
 
 	@param int $id identifiant d'un épisode
 
 	@return bool|Episode|null false si une erreur 
-	survient, un objet  Episode si uen correspondance
+	survient, un objet Episode si une correspondance
 	est rouvée, Null s'il n'y a aucune correspondance **/
 	public function read($id){
 		$this->pdo->prepare('SELECT * FROM episode WHERE id = :id');
 		
 		//liaison des paramètres
-		$this->pdoStatement->bindValue(':id, $is, PDO::PARAM_INT');
+		$this->pdoStatement->bindValue(':id', $is, PDO::PARAM_INT);
 		
 		//exécution de la requête
-		$excusteIsOk = $this->pdoStatement->execute();
+		$executeIsOk = $this->pdoStatement->execute();
 		
-		if($excusteIsOk){
+		if($executeIsOk){
 			//récupèration de notre résultat
-			$episode = $this->pdoStatement->fechObject('Episode') //Pas sure de moi pour le "Episode" à la fin
+			$episode = $this->pdoStatement->fechObject('Episode'); //Pas sure de moi pour le "Episode" à la fin
 
 			if($episode === false){
 				return null;
 
 			} else{
-				return $episode
+				return $episode;
 			} 
+		}
 		else{
 			//erreur d'exécution
 			return false;
@@ -69,15 +84,14 @@ class EpisodeManager{
 			}
 	 	}
 
-	}
-
 	/** Met à jour un objet stocké en bdd
 
 	@param Episode $episode objet de type Episode
 
 	@return bool true en cas de succès ou false en 
 	cas d'erreur **/
-	public function update(Episode $episode){
+
+	public function update (Episode $episode){
 
 
 	}
@@ -105,8 +119,7 @@ class EpisodeManager{
 		//construction d'un tableau d'objet de type Episode
 		$episode = [];
 
-		while($episode = $this->pdoStatement->fechObject('Episode'));
-		 {
+		while($episode = $this->pdoStatement->fechObject('Episode')){
 			$episode[] = $episode;
 		}
 

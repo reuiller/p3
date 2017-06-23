@@ -2,14 +2,14 @@
 
 
 namespace App\Entity;
-
+}
 
 class Episode{
 
 	private $id; // @var int $is identifiant de l'épisode (généré automatiquement par le SGBDR, donc pas de de setter à prévoir)
 	private $title; // @var string $title titre de l'épisode
 	private $episode; // @var string $episode contenu de l'épisode
-	private $idPseudo;
+	private $idPseudo; // @var int $idPseudo identifiant de l'utilisateur (généré automatiquement par le SGBDR, donc pas de de setter à prévoir)
 	private $content;
 	private $creationDate;
 
@@ -31,12 +31,16 @@ class Episode{
 		}
 	}
 
-	public function setIdPseudo($id_pseudo){
+	public function setContent($content){
 		//On vérifie qu'il s'agit bien d'une chaîne de caractères.
-		if (is_string($id_pseudo)){
-			$this->idPseudo = $idPseudo;
+		if (is_string($title)){
+			$this->content = $content;
 		}
 	}
+
+	public function setCreationDate($creationDate){	
+		$this->creationDate = $creationDate;
+		}
 
 	//liste des getters
 	public function getId(){
