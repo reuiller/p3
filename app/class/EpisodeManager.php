@@ -2,8 +2,14 @@
 
 use Episode;
 
+use PDO;
+
 class EpisodeManager{
 
+	/** @var \PDO $pdo objet PDO lié à la bdd "billets-simple49380". Comme la "conexion" 
+	va être utilisée dans plusieurs
+	* méthode, il est utile de stocker dans une varianle d'objet
+	*/ 
 	private $pdo;
 	/** EpisodeManager constructor.
 
@@ -24,7 +30,9 @@ class EpisodeManager{
 	@return bool true si l'objet a été inéré,
 	false si une erreur survient **/
 	public function create(Episode $episode){
+		$this->pdoStatement = $this->pdo->prepare('INSERT INTO episode VALUES (NULL, :')
 
+			//A COMPLETER ////////////////////////////////////////////////////////////////
 	}
 
 	/** Récupère un objet Episode à partir de son 
@@ -70,17 +78,7 @@ class EpisodeManager{
 	@return bool true en cas de succès ou false en 
 	cas d'erreur **/
 	public function update(Episode $episode){
-		$this->pdoStatement = $this->pdo->query('SELECT * FROM episode ORDER BY id ');
 
-		//construction d'un tableau d'objet de type Episode
-		$episode = [];
-
-		while($episode = $this->pdoStatement->fechObject('Episode'));
-		 {
-			$episode[] = $episode;
-		}
-
-		return $episode;
 
 	}
 
@@ -102,6 +100,17 @@ class EpisodeManager{
 	un tableau vide s'il n'y a aucun objet dans 
 	la bdd, ou false si une erreur survient **/
 	public function readAll(){
+		$this->pdoStatement = $this->pdo->query('SELECT * FROM episode ORDER BY idEpisode'); //Pas sure de moi pour le "idEpisode" à la
+
+		//construction d'un tableau d'objet de type Episode
+		$episode = [];
+
+		while($episode = $this->pdoStatement->fechObject('Episode'));
+		 {
+			$episode[] = $episode;
+		}
+
+		return $episode;
 
 	}
 }
