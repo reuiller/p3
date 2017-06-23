@@ -25,7 +25,7 @@ class EpisodeManager{
 
 	@return bool true si l'objet a été inéré,
 	false si une erreur survient **/
-	public function create(Episode &$episode)
+	private function create(Episode &$episode)
 	{
 		$this->pdoStatement = $this->pdo->prepare('INSERT INTO episode 
 			VALUES (NULL, :title, :episode, NULL, :content, :creationDate)');
@@ -90,7 +90,7 @@ class EpisodeManager{
 	@return bool true en cas de succès ou false en 
 	cas d'erreur **/
 
-	public function update (Episode $episode){
+	private function update (Episode $episode){
 		$this->pdoStatement = $this->pdo->prepare('UPDATE episode 
 			set title=:title, episode=:episode, content=:content, creationDate=:creationDate where id=:id LIMITE 1');
 		
@@ -141,4 +141,36 @@ class EpisodeManager{
 		return $episode;
 
 	}
+	/** Insert un objet Episode dans la bdd 
+	et met à jour l'objet passé en arguement 
+	en lui spécifiant un identifiant ou le met 
+	simplement à jour dans la bdd s'il en est issu
+
+	@param Episode $episode est un type d'objet 
+	passé par référence
+
+	@return bool true en cas de succès ou 
+	false si une erreur survient **/
+
+
+	public function save(Episode &$episode){
+
+		/*
+		* il faut utiliser la méthode create 
+		lorsqu'il s'agit d'un nouvel objet et 
+		la méthode Update lorsque l'objet n'est pas nouveau
+
+		*Comment le savoir ?
+		*Un nouvel objet n'a pas d'id
+		*Un objet issu de la bdd a un id
+		*/
+
+		if(is_null($episode->getId())){
+			return $this->create($episode);
+	}
+	else{
+		return $this->update($episode);
+		}
+	}
+
 }
