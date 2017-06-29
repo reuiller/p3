@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Episode <?php $idEpisode ?></title>
+		<title>Episode <?= $idEpisode ?></title>
 	</head>
 	<body>
-		Mon episode numéro <?php $idEpisode ?>
+		Mon episode numéro <?= $idEpisode ?>
 	</body>
 </html>

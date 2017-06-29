@@ -8,7 +8,6 @@ if(isset($_GET['url'])) {
 if($url == ''){
 	require 'home.php';
 } elseif (preg_match('#episode-([0-9]+)#', $url, $params)) {
-	//var_dump($params);
 	$idEpisode = $params[1];
 	require 'episode.php';
 } else {
