@@ -9,7 +9,7 @@ function chargerClass($class){
 }
 spl_autoload_register('chargerClass');
 
-//(voir compsoer autoload), revoir le chemin, ça doit focntionner quelque soit l'endori ou l'autoload est appélé
+//(voir compsoer autoload), revoir le chemin, ça doit fonctionner quelque soit l'endori ou l'autoload est appélé
 
 
 
