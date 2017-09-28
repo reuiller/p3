@@ -1,7 +1,7 @@
 
 <?php
 
-include('../app/bdd.php');
+include('App/bdd.php');
 
 //Autoloader
 function chargerClass($class){
@@ -24,7 +24,7 @@ spl_autoload_register('chargerClass');
 	var_dump($comment);
 
 
-//Router................
+/*Router................
 
   $url = '';
 if(isset($_GET['url'])) {
@@ -40,7 +40,10 @@ if($url == ''){
   require '404.php';
 }
 
+*/
 ?>
+
+
 
 
 <!DOCTYPE html>
