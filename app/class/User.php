@@ -2,9 +2,9 @@
 
 class User{
 
-	private $id;
-	private $pseudo;
-	private $pass;
+	protected $id;
+	protected $pseudo;
+	protected $pass;
 
 	//liste des setters
 	public function setPseudo($pseudo){

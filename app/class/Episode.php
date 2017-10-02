@@ -2,12 +2,12 @@
 
 class Episode{
 
-	private $id; // @var int $id identifiant de l'épisode (généré automatiquement par le SGBDR, donc pas de de setter à prévoir)
-	private $title; // @var string $title titre de l'épisode
-	private $episode; // @var string $episode contenu de l'épisode
-	private $idPseudo; // @var int $idPseudo identifiant de l'utilisateur (généré automatiquement par le SGBDR, donc pas de de setter à prévoir)
-	private $content;
-	private $creationDate;
+	protected $id; // @var int $id identifiant de l'épisode (généré automatiquement par le SGBDR, donc pas de de setter à prévoir)
+	protected $title; // @var string $title titre de l'épisode
+	protected $episode; // @var string $episode contenu de l'épisode
+	protected $idPseudo; // @var int $idPseudo identifiant de l'utilisateur (généré automatiquement par le SGBDR, donc pas de de setter à prévoir)
+	protected $content;
+	protected $creationDate;
 
 	//liste des setters
 	public function setTitle($title){

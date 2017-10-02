@@ -2,11 +2,11 @@
 
 class Comment{
 
-	private $id;
-	private $idEpisode;
-	private $author;
-	private $content;
-	private $dateComment;
+	protected $id;
+	protected $idEpisode;
+	protected $author;
+	protected $content;
+	protected $dateComment;
 
 	//liste des setters
 	public function setIdEpisode($idEpisode){

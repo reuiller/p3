@@ -6,7 +6,7 @@ class EpisodeManager{
 	va être utilisée dans plusieurs
 	* méthode, il est utile de stocker dans une varianle d'objet
 	*/ 
-	private $pdo;
+	protected $pdo;
 	/** EpisodeManager constructor.
 
 	Initialisation de la connexion à la base 
@@ -25,7 +25,7 @@ class EpisodeManager{
 
 	@return bool true si l'objet a été inéré,
 	false si une erreur survient **/
-	private function create(Episode &$episode)
+	protected function create(Episode &$episode)
 	{
 		$this->pdoStatement = $this->pdo->prepare('INSERT INTO episode 
 			VALUES (NULL, :title, :episode, NULL, :content, :creationDate)');
