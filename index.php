@@ -6,7 +6,6 @@ include('App/bdd.php');
 
 //Autoloader
 require 'App/class/Autoloader.php';
-Autoloader::register();
 
 /**
 function chargerClass($class){

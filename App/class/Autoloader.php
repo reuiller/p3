@@ -11,3 +11,6 @@ class Autoloader{
         include 'App/class/' . $className . '.php';
     }
 }
+
+//exécution de l'autoload
+Autoloader::register();
