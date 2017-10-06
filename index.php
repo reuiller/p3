@@ -3,19 +3,24 @@
 
 include('App/bdd.php');
 
+
 //Autoloader
+require 'App/class/Autoloader.php';
+Autoloader::register();
+
+/**
 function chargerClass($class){
 	require __DIR__.'/app/class/'.$class.'.php';
 }
 spl_autoload_register('chargerClass');
+**/
 
 //(voir compsoer autoload), revoir le chemin, ça doit fonctionner quelque soit l'endori ou l'autoload est appélé
 
-
-
+//require_once("App/class/Autoloader.php");
 
 //test
-    $comment = new Comment();    
+  $comment = new Comment();    
 	
 	$comment->setAuthor('l\'auteur c\'est moi');
 
