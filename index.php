@@ -1,12 +1,17 @@
 <?php
 
+
+use \Maxime\comment;
+
 include('App/bdd.php');
 
 
 //Autoloader
 require 'App/class/Autoloader.php';
 
+//Le fichier des tests
 require 'test.php';
+
 /**
 function chargerClass($class){
 	require __DIR__.'/app/class/'.$class.'.php';

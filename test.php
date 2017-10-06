@@ -1,7 +1,8 @@
 <?php
 
 //test
-  $comment = new Comment();    
+
+  $comment = new \Maxime\comment\Comment();    
 	
 	$comment->setAuthor('l\'auteur c\'est moi');
 

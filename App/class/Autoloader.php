@@ -1,16 +1,22 @@
 <?php
 
+namespace Maxime;
+
 class Autoloader{
 
     static function register(){
-        spl_autoload_register(array('Autoloader', 'autoload'));
+        spl_autoload_register(array(__CLASS__, 'autoload'));
     }
 
 
     static public function autoload($className){
-        include 'App/class/' . $className . '.php';
+        $className = str_replace(__NAMESPACE__ . '\\', '', $className);
+        $className = str_replace('\\', '/', $className);
+        require 'App/class/' . $className . '.php';
     }
 }
 
+
+
 //exécution de l'autoload
-Autoloader::register();
+\Maxime\Autoloader::register();
