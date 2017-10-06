@@ -1,4 +1,3 @@
-
 <?php
 
 include('App/bdd.php');
@@ -7,6 +6,7 @@ include('App/bdd.php');
 //Autoloader
 require 'App/class/Autoloader.php';
 
+require 'test.php';
 /**
 function chargerClass($class){
 	require __DIR__.'/app/class/'.$class.'.php';
@@ -18,16 +18,6 @@ spl_autoload_register('chargerClass');
 
 //require_once("App/class/Autoloader.php");
 
-//test
-  $comment = new Comment();    
-	
-	$comment->setAuthor('l\'auteur c\'est moi');
-
-	echo $comment->getAuthor();
-
-	var_dump($comment);
-
-  var_dump(__DIR__);
 
 
 /*Router................
