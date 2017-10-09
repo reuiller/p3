@@ -4,7 +4,7 @@ include('App/bdd.php');
 
 
 //Autoloader
-require 'App/class/Autoloader.php';
+require 'App/class/Autoloader2.php';
 
 //Le fichier des tests
 require 'test.php';
