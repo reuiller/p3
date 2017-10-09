@@ -1,7 +1,5 @@
 <?php
 
-namespace Maxime\comment;
-
 class Comment{
 
 	protected $id;

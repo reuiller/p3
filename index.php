@@ -1,8 +1,5 @@
 <?php
 
-
-use \Maxime\comment;
-
 include('App/bdd.php');
 
 
