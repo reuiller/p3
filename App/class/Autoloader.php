@@ -18,5 +18,5 @@ class Autoloader{
 
 
 
-//exécution de l'autoload
+//exécution de l'autoload.
 \Maxime\Autoloader::register();
