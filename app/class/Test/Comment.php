@@ -1,5 +1,7 @@
 <?php
 
+namespace Test;
+
 class Comment{
 
 	protected $id;

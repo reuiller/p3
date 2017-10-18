@@ -1,4 +1,6 @@
 <?php
+namespace Test;
+
 class Autoloader
 {
     /**
@@ -14,15 +16,9 @@ class Autoloader
     static function autoload($className)
     {
         $path = __DIR__ . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
-        echo "path $path";
         if (file_exists($path)) 
         {
             require_once $path;
         }
     }
 }
-
-var_dump($path);
-
-Autoloader::register();
-

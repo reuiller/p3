@@ -1,20 +1,27 @@
 <?php
+namespace Test;
+
+use Test\Comment;
 
 include('App/bdd.php');
 
-
 //Autoloader
 require 'App/class/Autoloader4.php';
+Autoloader::register();
 
 //Le fichier des tests
 require 'test.php';
 
 
-$comment = new Comment(); 
-    
-  $comment->setAuthor('l\'auteur c\'est moi');
+ 
+$comment = new Comment();
 
-  echo $comment->getAuthor();
+    
+  //$comment->setAuthor('l\'auteur c\'est moi');
+
+ // echo $comment->getAuthor();
+
+
 
 
 
