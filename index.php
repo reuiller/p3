@@ -4,10 +4,23 @@ include('App/bdd.php');
 
 
 //Autoloader
-require 'App/class/Autoloader2.php';
+require 'App/class/Autoloader4.php';
 
 //Le fichier des tests
 require 'test.php';
+
+
+$comment = new Comment(); 
+    
+  $comment->setAuthor('l\'auteur c\'est moi');
+
+  echo $comment->getAuthor();
+
+
+
+
+
+
 
 /**
 function chargerClass($class){
