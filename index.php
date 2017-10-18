@@ -7,7 +7,7 @@ use Comment\Comment;
 include('App/bdd.php');
 
 //Autoloader
-require 'App/class/Autoloader4.php';
+require 'App/class/Autoloader.php';
 Autoloader::register();
 
 //Le fichier des tests

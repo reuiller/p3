@@ -1,19 +1,24 @@
 <?php
+namespace Comment;
 
-class Autoloader{
-
-    static function register(){
-        spl_autoload_register(array('Autoloader', 'autoload'));
+class Autoloader
+{
+    /**
+     * spl_autoload_register()
+     */
+    static function register()
+    {
+        spl_autoload_register(array(__CLASS__, 'autoload'));
     }
-
-    static public function autoload($className){
-    	$className = str_replace('Maxime\\', '', $className);
-    	$className = str_replace('\\', '/', $className);
-        require 'App/class/' . $className . '.php';
-     }
+    /**
+     * @param $class_name
+     */
+    static function autoload($className)
+    {
+        $path = __DIR__ . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
+        if (file_exists($path)) 
+        {
+            require_once $path;
+        }
+    }
 }
-
-//exécution de l'autoload.
-Autoloader::register();
-
-
