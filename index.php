@@ -1,8 +1,8 @@
 <?php
-namespace Comment;
 
-use Comment\Comment;
-
+use \Maxime\Episode\Episode;
+use \Maxime\Comment\Comment;
+use \Maxime\Autoloader;
 
 include('App/bdd.php');
 
@@ -14,7 +14,12 @@ Autoloader::register();
 require 'test.php';
 
 
+$episode = new Episode();
 $comment = new Comment();
+
+
+var_dump($episode);
+var_dump($comment);
 
     
   //$comment->setAuthor('l\'auteur c\'est moi');

@@ -1,5 +1,6 @@
 <?php
-namespace Comment;
+
+namespace Maxime;
 
 class Autoloader
 {
@@ -16,6 +17,7 @@ class Autoloader
     static function autoload($className)
     {
         $path = __DIR__ . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
+        $path = str_replace(__NAMESPACE__.'\\','', $path);
         if (file_exists($path)) 
         {
             require_once $path;

@@ -1,5 +1,5 @@
 <?php
-namespace Comment;
+namespace Maxime\Comment;
 
 class Comment{
 

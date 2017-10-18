@@ -1,4 +1,5 @@
 <?php
+namespace Maxime\Episode;
 
 class EpisodeManager{
 
