@@ -1,5 +1,5 @@
 <?php
-namespace Test;
+namespace Comment;
 
 class Autoloader
 {

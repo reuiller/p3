@@ -1,6 +1,5 @@
 <?php
-
-namespace Test;
+namespace Comment;
 
 class Comment{
 

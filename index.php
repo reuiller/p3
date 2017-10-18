@@ -1,7 +1,8 @@
 <?php
-namespace Test;
+namespace Comment;
 
-use Test\Comment;
+use Comment\Comment;
+
 
 include('App/bdd.php');
 
@@ -13,7 +14,6 @@ Autoloader::register();
 require 'test.php';
 
 
- 
 $comment = new Comment();
 
     
